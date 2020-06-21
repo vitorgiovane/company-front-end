@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react'
 import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { KeyboardArrowRight } from '@styled-icons/material-outlined'
 import { Twitter, Linkedin } from '@styled-icons/entypo-social'
 import { Facebook, Google } from '@styled-icons/boxicons-logos'
@@ -60,6 +60,11 @@ const SignIn: React.FC = () => {
     [signIn, addToast]
   )
 
+  const history = useHistory()
+  const handleRegister = () => {
+    history.push('/signup')
+  }
+
   return (
     <Container>
       <img src={logo} alt="Company" />
@@ -80,27 +85,31 @@ const SignIn: React.FC = () => {
         <Button backgroundColor="#2f80ed" type="submit">
           LOGIN
         </Button>
-        <a href="#">
+        <a href="/">
           Esqueci minha senha <KeyboardArrowRight size={21} />
         </a>
       </Form>
       <AlternativeLogin>
         <span>Faça seu login usando</span>
         <div>
-          <span>
+          <a href="/">
             <Facebook size={30} color="#000" />
-          </span>
-          <span>
+          </a>
+          <a href="/">
             <Twitter size={26} color="#000" />
-          </span>
-          <span>
+          </a>
+          <a href="/">
             <Linkedin size={18} color="#000" />
-          </span>
-          <span>
+          </a>
+          <a href="/">
             <Google size={27} color="#000" />
-          </span>
+          </a>
         </div>
-        <Button backgroundColor="#000" borderColor="#2f80ed" type="submit">
+        <Button
+          onClick={handleRegister}
+          backgroundColor="#000"
+          borderColor="#2f80ed"
+        >
           NÃO TENHO LOGIN
         </Button>
       </AlternativeLogin>

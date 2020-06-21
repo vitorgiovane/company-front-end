@@ -45,6 +45,7 @@ export const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: 0.2s color;
 
       &:hover {
         color: ${shade(0.2, '#2f80ed')};
@@ -72,7 +73,7 @@ export const AlternativeLogin = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
 
-    span {
+    a {
       border-radius: 50%;
       background-color: #fff;
       width: 42px;
@@ -80,9 +81,14 @@ export const AlternativeLogin = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: 0.2s background-color;
 
-      & + span {
+      & + a {
         margin-left: 10px;
+      }
+
+      &:hover {
+        background-color: ${shade(0.3, '#fff')};
       }
     }
   }

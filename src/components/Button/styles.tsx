@@ -17,7 +17,7 @@ export const Container = styled.button<ContainerProps>`
   background: ${(props) => props.backgroundColor};
   font-weight: 500;
   font-size: 16px;
-  transition: background-color 0.2s;
+  transition: background-color linear 0.2s, border-color linear 0.2s;
   width: calc(100% - 20px);
   border: 1px solid #2a004f;
   padding: 20px 0;
@@ -35,6 +35,12 @@ export const Container = styled.button<ContainerProps>`
   &:hover {
     background: ${(props) =>
       props.backgroundColor && shade(0.2, props.backgroundColor)};
+
+    ${(props) =>
+      props.borderColor &&
+      css`
+        border-color: ${props.borderColor && shade(0.5, props.borderColor)};
+      `}
   }
 
   svg {
