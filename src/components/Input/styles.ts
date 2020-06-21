@@ -10,7 +10,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  padding: 10px 10px 6px 10px;
+  padding: 8px 8px 6px 8px;
   margin-bottom: 1rem;
   border-radius: 20px;
   background-color: transparent;
@@ -37,7 +37,7 @@ export const Container = styled.div<ContainerProps>`
     color: #2f80ed;
     display: block;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     border: 1px solid 2a004f;
 
     ${(props) =>
@@ -53,20 +53,18 @@ export const Container = styled.div<ContainerProps>`
 
     input {
       flex-grow: 1;
-      padding: 10px 0 4px 0;
+      padding: 9px 0 4px 0;
       background-color: transparent;
       border: none;
       border-bottom: 1px solid #73777a;
       border-radius: 0%;
       color: ${(props) => props.themeColor};
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.5px;
       transition: border-color 0.2s;
 
       &::placeholder {
         color: #808080;
-        font-weight: 300;
       }
 
       ${(props) =>

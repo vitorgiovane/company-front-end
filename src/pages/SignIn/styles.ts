@@ -2,22 +2,22 @@ import styled from 'styled-components'
 import { shade } from 'polished'
 
 export const Container = styled.div`
-  padding: 4em 4em 12em;
+  padding: 4.1em 4em 12em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   img {
-    width: auto;
-    height: 76px;
-    margin-bottom: 8em;
+    width: 192px;
+    height: 80px;
+    margin-bottom: 8.5em;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    width: 332px;
+    width: 302px;
 
     > div {
       margin-bottom: 1em;
@@ -31,6 +31,10 @@ export const Container = styled.div`
       & + input {
         margin-top: 10px;
       }
+    }
+
+    button {
+      font-weight: 700;
     }
 
     a {
@@ -60,7 +64,7 @@ export const AlternativeLogin = styled.div`
   justify-content: center;
   margin-top: 4em;
   align-items: center;
-  width: 332px;
+  width: 302px;
 
   > span {
     color: #808080;
@@ -91,5 +95,9 @@ export const AlternativeLogin = styled.div`
         background-color: ${shade(0.3, '#fff')};
       }
     }
+  }
+
+  button {
+    font-weight: 700;
   }
 `
