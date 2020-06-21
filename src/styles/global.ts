@@ -9,20 +9,15 @@ export default createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(
-      150deg,
-      rgba(41, 57, 75, 1) 0%,
-      rgba(23, 37, 52, 1) 100%
-    );
+    background: #000;
     min-width: 480px;
-    background-attachment: fixed;
 
-    color: #3a3a3a;
+    color: #fff;
     -webkit-font-smoothing: antialiased;
   }
 
   body, input, button {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 16px;
   }
 

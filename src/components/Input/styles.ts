@@ -10,14 +10,15 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  padding: 0 24px;
+  padding: 10px 10px 6px 10px;
   margin-bottom: 1rem;
-  border-radius: 50px;
-  background-color: #0c1722;
+  border-radius: 20px;
+  background-color: transparent;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   color: #5d7184;
-  border: 2px solid #0c1722;
+  border: 1px solid transparent;
+  transition: background-color 0.2s;
 
   ${(props) =>
     props.isFilled &&
@@ -26,41 +27,64 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   ${(props) =>
-    props.isErrored &&
-    css`
-      color: #f42626;
-      border-color: #f42626;
-    `}
-
-  ${(props) =>
     props.isFocused &&
     css`
-      border-color: ${props.themeColor};
       color: ${props.themeColor};
+      background-color: #fff;
     `}
 
-  input {
-    flex-grow: 1;
-    padding: 18px 0;
-    background-color: transparent;
-    border: none;
-    color: ${(props) => props.themeColor};
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 0 30px 30px 0;
-    letter-spacing: 0.5px;
+  span {
+    color: #2f80ed;
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid 2a004f;
 
-    &::placeholder {
-      color: #5d7184;
-    }
+    ${(props) =>
+      props.isErrored &&
+      css`
+        color: #f42626;
+      `}
   }
 
-  svg {
-    margin-right: 10px;
+  > div {
+    display: flex;
+    align-items: center;
+
+    input {
+      flex-grow: 1;
+      padding: 10px 0 4px 0;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #73777a;
+      border-radius: 0%;
+      color: ${(props) => props.themeColor};
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: border-color 0.2s;
+
+      &::placeholder {
+        color: #808080;
+        font-weight: 300;
+      }
+
+      ${(props) =>
+        props.isFocused &&
+        css`
+          border-bottom-color: transparent;
+        `}
+    }
+
+    svg {
+      margin-right: 10px;
+    }
   }
 `
 
 export const Error = styled(Tooltip)`
+  margin-right: -10px;
+
   svg {
     margin: 0 0 0 10px;
     border-radius: 50%;

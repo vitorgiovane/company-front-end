@@ -5,7 +5,6 @@ import React, {
   useState,
   useCallback
 } from 'react'
-import { StyledIconProps } from '@styled-icons/styled-icon'
 import { ExclamationCircle } from '@styled-icons/fa-solid'
 import { useField } from '@unform/core'
 
@@ -13,16 +12,11 @@ import { Container, Error } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
-  icon?: React.ComponentType<StyledIconProps>
+  label: string
   themeColor: string
 }
 
-const Input: React.FC<InputProps> = ({
-  name,
-  icon: Icon,
-  themeColor,
-  ...rest
-}) => {
+const Input: React.FC<InputProps> = ({ name, label, themeColor, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const { fieldName, defaultValue, error, registerField } = useField(name)
 
@@ -51,19 +45,21 @@ const Input: React.FC<InputProps> = ({
       isFilled={isFilled}
       isErrored={!!error}
     >
-      {Icon && <Icon size={14} />}
-      <input
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        defaultValue={defaultValue}
-        ref={inputRef}
-        {...rest}
-      />
-      {error && (
-        <Error title={error}>
-          <ExclamationCircle color="#f42626" size={20} />
-        </Error>
-      )}
+      <span>{label}</span>
+      <div>
+        <input
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          {...rest}
+        />
+        {error && (
+          <Error title={error}>
+            <ExclamationCircle color="#f42626" size={20} />
+          </Error>
+        )}
+      </div>
     </Container>
   )
 }
