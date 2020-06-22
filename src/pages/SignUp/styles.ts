@@ -1,101 +1,98 @@
-import styled, { keyframes } from 'styled-components'
-import { shade } from 'polished'
+import styled from 'styled-components'
 
-export const Container = styled.div`
-  height: 100vh;
-  padding: 3em 4em;
-  display: flex;
+interface ContainerProps {
+  active?: boolean
+}
 
-  @media only screen and (max-width: 720px) {
-    flex-direction: column;
-    height: auto;
-  }
-`
-
-export const Resume = styled.div`
+export const Container = styled.div<ContainerProps>`
+  padding: 4.1em 4em 12em;
   display: flex;
   flex-direction: column;
-  flex-basis: 60%;
-
-  padding-right: 2em;
+  justify-content: center;
+  align-items: center;
 
   img {
-    align-self: flex-start;
-    width: auto;
-    height: 40px;
-  }
-
-  h1 {
-    margin-top: 3em;
-    color: #eeeeee;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    font-size: 40px;
-
-    @media only screen and (max-width: 720px) {
-      display: none;
-    }
-  }
-
-  h3 {
-    color: #eeeeee;
-    font-weight: 400;
-    font-size: 20px;
-
-    @media only screen and (max-width: 720px) {
-      display: none;
-    }
-  }
-`
-const appearFromRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(50px)
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px)
-  }
-`
-
-export const RegisterBox = styled.div`
-  background: #111f2d;
-  border-radius: 30px;
-  padding: 60px 50px;
-  align-self: center;
-  flex-grow: 1;
-  -webkit-box-shadow: 21px 29px 19px -12px rgba(0, 0, 0, 0.09);
-  -moz-box-shadow: 21px 29px 19px -12px rgba(0, 0, 0, 0.09);
-  box-shadow: 21px 29px 19px -12px rgba(0, 0, 0, 0.09);
-
-  animation: ${appearFromRight} 1s;
-
-  @media only screen and (max-width: 720px) {
-    width: 100%;
-    margin: 5em 0;
-  }
-
-  h1 {
-    color: #acb9c6;
-    font-weight: 600;
-    margin-bottom: 1em;
-    font-size: 24px;
+    width: 192px;
+    height: 80px;
+    margin-bottom: 3em;
   }
 
   form {
     display: flex;
     flex-direction: column;
+    width: 302px;
+    margin-left: 130px;
 
-    a {
-      color: #f4a40f;
-      text-decoration: none;
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 14px;
-      transition: color 0.2s;
+    @media only screen and (max-width: 720px) {
+      margin: auto;
+    }
 
-      &:hover {
-        color: ${shade(0.3, '#F4A40F')};
+    > h1 {
+      font-size: 17px;
+      margin-bottom: 2em;
+      font-weight: 700;
+      padding: 0 8px;
+    }
+
+    > p {
+      font-size: 13px;
+      margin-bottom: 2em;
+      font-weight: 300;
+      padding: 0 8px;
+    }
+
+    .newsletter {
+      padding: 0 8px;
+      margin: 1em 0 3em;
+
+      h2 {
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 1em;
+      }
+    }
+
+    .select {
+      padding: 0 10px;
+      margin-bottom: 1rem;
+
+      span {
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .react-select__control {
+        background-color: #000;
+        border: none;
+        border-bottom: 1px solid #73777a;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .react-select__menu {
+        background-color: #fff;
+
+        .react-select__option {
+          color: #000;
+          font-size: 13px;
+        }
+      }
+
+      .react-select__value-container {
+        font-size: 13px;
+        padding: 0;
+
+        .react-select__single-value {
+          color: #2f80ed;
+        }
+      }
+
+      .react-select__indicator-separator {
+        display: none;
+      }
+
+      .react-select__indicator {
+        color: #fff;
       }
     }
   }

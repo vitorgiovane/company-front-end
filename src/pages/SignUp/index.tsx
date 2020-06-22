@@ -1,23 +1,31 @@
-import React, { useCallback, useRef } from 'react'
-import { Envelope, Lock, User, SignInAlt } from '@styled-icons/fa-solid'
+import React, { useCallback, useRef, useState } from 'react'
 import { FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
 import { useToast } from '../../hooks/toast'
 import getValidationErrors from '../../utils/getValidationErrors'
+import cpfMask from '../../utils/cpfMask'
+import phoneMask from '../../utils/phoneMask'
 import logo from '../../assets/logo.png'
 
-import { Container, Resume, RegisterBox } from './styles'
+import { Container } from './styles'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import LitteButton from '../../components/LittleButton'
+import Select from '../../components/Select'
 
 interface SignUpForm {
   name: string
   email: string
   password: string
+  gender: string
+  phone: string
+  country: string
+  cpf: string
+  newsletter: boolean
 }
 
 const SignUp: React.FC = () => {
@@ -25,19 +33,77 @@ const SignUp: React.FC = () => {
   const { addToast } = useToast()
   const history = useHistory()
 
+  const [newsletter, setNewsletter] = useState(true)
+  const [treatedCpf, setTreatedCpf] = useState('')
+  const [treatedPhone, setTreatedPhone] = useState('')
+
+  const enableNewsletter = () => {
+    setNewsletter(true)
+  }
+
+  const disableNewsletter = () => {
+    setNewsletter(false)
+  }
+
+  const genderOptions = [
+    { value: 'male', label: 'Masculino' },
+    { value: 'female', label: 'Feminino' }
+  ]
+
+  const countryOptions = [
+    { value: 'BR', label: 'Brasil' },
+    { value: 'US', label: 'Estados Unidos da América' },
+    { value: 'IT', label: 'Itália' }
+  ]
+
+  const handleCpf = useCallback((value) => {
+    setTreatedCpf(cpfMask(value))
+  }, [])
+
+  const handleSelect = useCallback(() => {
+    console.log('Vitor')
+  }, [])
+
+  const handlePhone = useCallback((value) => {
+    setTreatedPhone(phoneMask(value))
+  }, [])
+
   const handleSubmit = useCallback(
     async (userAttributes: SignUpForm) => {
+      userAttributes.newsletter = newsletter
       try {
         formReference.current?.setErrors({})
 
+        const phoneRegExp = /^(?:(?:\+|00)?(\d{2})\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/
+        const nameRegExp = /^[a-z\u00C0-\u02AB'´`]+\.?\s([a-z\u00C0-\u02AB'´`]+\.?\s?)+$/i
         const schema = Yup.object().shape({
-          name: Yup.string().min(3, 'Your name must be at least 3 characters'),
+          name: Yup.string()
+            .min(3, 'Seu nome deve ter pelo menos 3 caracteres')
+            .matches(
+              nameRegExp,
+              'Nome inválido! Insira um nome completo e sem símbolos. (Acentos e pontos são permitidos)'
+            ),
           email: Yup.string()
-            .required('E-mail is required')
-            .email('Enter a valid e-mail'),
+            .required('O e-mail é obrigatório')
+            .email('Insira um e-mail válido'),
           password: Yup.string().min(
             6,
-            'Enter a password of at least 6 characters'
+            'Insira uma senha com pelo menos 6 caracteres'
+          ),
+          passwordConfirmation: Yup.string().test(
+            'passwords-match',
+            'A senha e a confirmação de senha não correspondem.',
+            function (value) {
+              return this.parent.password === value
+            }
+          ),
+          phone: Yup.string().matches(
+            phoneRegExp,
+            'Informe um telefone com o código do país e o DDD. Ex.: +55 41 99999-9999'
+          ),
+          cpf: Yup.string().min(
+            11,
+            'Um CPF válido contém pelos menos 11 caracteres'
           )
         })
 
@@ -48,8 +114,8 @@ const SignUp: React.FC = () => {
         await api.post('/users', userAttributes)
         addToast({
           type: 'success',
-          title: 'User successfully registered',
-          description: 'You can now log in to Zeruai.'
+          title: 'Usuário cadastrado com sucesso',
+          description: 'Você agora pode fazer login no Company.'
         })
 
         history.push('/')
@@ -60,60 +126,108 @@ const SignUp: React.FC = () => {
           return
         }
 
+        if (error?.response?.data?.message) {
+          addToast({
+            type: 'error',
+            title: 'Erro no cadastro',
+            description: error.response.data.message
+          })
+          return
+        }
+
         addToast({
           type: 'error',
-          title: 'Registration error',
-          description: 'An error occurred during registration. Try again.'
+          title: 'Erro no cadastro',
+          description: 'Ocorreu um erro durando o cadastro. Tente novamente.'
         })
       }
     },
-    [addToast, history]
+    [addToast, history, newsletter]
   )
 
   return (
     <Container>
-      <Resume>
-        <img src={logo} alt="Zeruai" />
-        <h1>
-          Get exclusive access <br />
-          to Zeruai
-        </h1>
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit, sed do
-          eiusmod tempor <br />
-          incididunt ut labore et dolore.
-        </h3>
-      </Resume>
-      <RegisterBox>
-        <h1>Create account</h1>
-        <Form ref={formReference} onSubmit={handleSubmit}>
-          <Input
-            name="name"
-            label="Nome"
-            themeColor="#f4a40f"
-            placeholder="Name"
+      <img src={logo} alt="Company" />
+      <Form ref={formReference} onSubmit={handleSubmit}>
+        <h1>Conclua seu Cadastro</h1>
+        <p>
+          Preencha o formulário para
+          <br />
+          criar o seu login
+        </p>
+        <Input
+          name="name"
+          label="Nome"
+          themeColor="#ffffff"
+          placeholder="Nome Completo"
+        />
+        <Input
+          name="email"
+          label="E-mail"
+          themeColor="#ffffff"
+          placeholder="Seu e-mail"
+        />
+        <Input
+          name="password"
+          type="password"
+          label="Senha"
+          themeColor="#ffffff"
+          placeholder="Sua senha"
+        />
+        <Input
+          name="passwordConfirmation"
+          type="password"
+          label="Confirmar senha"
+          themeColor="#ffffff"
+          placeholder="Insira novamente sua senha"
+        />
+        <div className="select">
+          <span>Gênero</span>
+          <Select
+            name="gender"
+            defaultValue={{ value: 'male', label: 'Masculino' }}
+            options={genderOptions}
           />
-          <Input
-            name="email"
-            label="E-mail"
-            themeColor="#f4a40f"
-            placeholder="E-mail"
+        </div>
+        <Input
+          name="phone"
+          label="Telefone"
+          themeColor="#ffffff"
+          placeholder="Insira seu telefone com DDD"
+          onChange={(event) => handlePhone(event.target.value)}
+          value={treatedPhone}
+        />
+        <div className="select">
+          <span>País</span>
+          <Select
+            name="country"
+            defaultValue={{ value: 'BR', label: 'Brasil' }}
+            options={countryOptions}
           />
-          <Input
-            name="password"
-            label="Senha"
-            type="password"
-            themeColor="#f4a40f"
-            placeholder="Password"
-          />
-          <Button backgroundColor="#f4a40f" type="submit" icon={SignInAlt}>
-            Sign Up
-          </Button>
-          <Link to="/">
-            Already have an account? <strong>Sign In</strong>
-          </Link>
-        </Form>
-      </RegisterBox>
+        </div>
+        <Input
+          name="cpf"
+          label="Número de CPF"
+          themeColor="#ffffff"
+          placeholder="Insira o número do CPF"
+          onChange={(event) => handleCpf(event.target.value)}
+          value={treatedCpf}
+        />
+
+        <div className="newsletter">
+          <h2>Deseja receber nossa newsletter?</h2>
+          <LitteButton onClick={enableNewsletter} active={newsletter}>
+            Sim
+          </LitteButton>
+          <LitteButton onClick={disableNewsletter} active={!newsletter}>
+            Não
+          </LitteButton>
+        </div>
+
+        <Button backgroundColor="#2f80ed" type="submit">
+          COMEÇAR
+        </Button>
+      </Form>
     </Container>
   )
 }

@@ -10,7 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   borderColor?: string
 }
 
-const Button: React.FC<ButtonProps> = ({
+const LittleButton: React.FC<ButtonProps> = ({
   icon: Icon,
   backgroundColor,
   borderColor,
@@ -27,4 +27,4 @@ const Button: React.FC<ButtonProps> = ({
   </Container>
 )
 
-export default Button
+export default LittleButton

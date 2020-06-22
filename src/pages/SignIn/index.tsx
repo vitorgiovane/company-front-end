@@ -112,6 +112,7 @@ const SignIn: React.FC = () => {
         >
           NÃO TENHO LOGIN
         </Button>
+        <a href="/">CENTRAL DE AJUDA</a>
       </AlternativeLogin>
     </Container>
   )

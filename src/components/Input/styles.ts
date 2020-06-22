@@ -16,7 +16,6 @@ export const Container = styled.div<ContainerProps>`
   background-color: transparent;
   display: flex;
   flex-direction: column;
-  color: #5d7184;
   border: 1px solid transparent;
   transition: background-color 0.2s;
 
@@ -34,11 +33,19 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   span {
-    color: #2f80ed;
     display: block;
     font-weight: 700;
     font-size: 13px;
     border: 1px solid 2a004f;
+    ${(props) =>
+      css`
+        color: ${props.themeColor};
+      `}
+      ${(props) =>
+        props.isFocused &&
+        css`
+          color: #2f80ed;
+        `}
 
     ${(props) =>
       props.isErrored &&
@@ -58,7 +65,7 @@ export const Container = styled.div<ContainerProps>`
       border: none;
       border-bottom: 1px solid #73777a;
       border-radius: 0%;
-      color: ${(props) => props.themeColor};
+      color: #2f80ed;
       font-size: 13px;
       font-weight: 500;
       transition: border-color 0.2s;

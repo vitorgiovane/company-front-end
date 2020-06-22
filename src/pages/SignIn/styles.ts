@@ -12,6 +12,10 @@ export const Container = styled.div`
     width: 192px;
     height: 80px;
     margin-bottom: 8.5em;
+
+    @media only screen and (max-width: 720px) {
+      margin-bottom: 2.5em;
+    }
   }
 
   form {
@@ -99,5 +103,28 @@ export const AlternativeLogin = styled.div`
 
   button {
     font-weight: 700;
+  }
+
+  > a {
+    text-transform: uppercase;
+    color: #2f80ed;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s color;
+    margin-top: 2.5em;
+    display: none;
+
+    @media only screen and (max-width: 720px) {
+      display: flex;
+    }
+
+    &:hover {
+      color: ${shade(0.2, '#2f80ed')};
+    }
   }
 `
