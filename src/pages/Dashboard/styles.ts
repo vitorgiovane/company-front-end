@@ -6,14 +6,14 @@ export const Container = styled.div``
 export const TopBar = styled.div`
   width: 100%;
   height: 100px;
-  background-color: #394655;
+  background-color: #222;
   display: flex;
   justify-content: space-between;
   padding: 0 6%;
   align-items: center;
 
   > img {
-    height: 38px;
+    height: 52px;
   }
 
   > h1 {
@@ -66,7 +66,7 @@ export const Menu = styled.ul<MenuProps>`
   li {
     color: #ccc;
     list-style: none;
-    padding: 20px 30px;
+    padding: 18.5px 30px;
     font-size: 14px;
 
     & + li {
@@ -74,7 +74,7 @@ export const Menu = styled.ul<MenuProps>`
     }
 
     button {
-      background-color: #394655;
+      background-color: #222;
       display: block;
       border: none;
       width: 100%;
@@ -86,7 +86,7 @@ export const Menu = styled.ul<MenuProps>`
       border-bottom-left-radius: 12px;
 
       &:hover {
-        background-color: ${lighten(0.1, '#394655')};
+        background-color: ${lighten(0.2, '#222')};
       }
     }
   }
@@ -105,7 +105,7 @@ export const Content = styled.div`
 `
 
 export const Plan = styled.div`
-  background: #eee;
+  background: #fff;
   max-width: 32%;
   height: 100%;
   padding: 40px 30px;
@@ -138,13 +138,13 @@ export const Plan = styled.div`
   }
 
   button {
-    background-color: #f4a40f;
+    background-color: #2f80ed;
     border: none;
     margin: auto;
     padding: 16px 30px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 700;
-    color: #111f2d;
+    color: #fff;
   }
 `
