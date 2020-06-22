@@ -1,19 +1,19 @@
 <p align="center">
   <br>
-  <img height="70" alt="Zeruai logo" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592201062/zeruai/dark-logo_dpmouh.png" />
+  <img height="150" alt="Company logo" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592808191/company/logo-dark_wkt9dz.png" />
   </p>
   <br>
 <h2 align="center">
-  Front-end of Zeruai application
+  Front-end of Company application
     <br>
 </h2>
 <h4 align="center">Interface developed with TypeScript and ReactJS</h4>
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitorgiovane/zeruai-front-end?color=%2304D361">
-  <img alt="GitHub tp language" src="https://img.shields.io/github/languages/top/vitorgiovane/zeruai-front-end">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitorgiovane/company-front-end?color=%2304D361">
+  <img alt="GitHub tp language" src="https://img.shields.io/github/languages/top/vitorgiovane/company-front-end">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
-  <img alt="Code size" src="https://img.shields.io/github/languages/code-size/vitorgiovane/zeruai-front-end">
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/vitorgiovane/zeruai-front-end">
+  <img alt="Code size" src="https://img.shields.io/github/languages/code-size/vitorgiovane/company-front-end">
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/vitorgiovane/company-front-end">
 </p>
 
 <br>
@@ -26,33 +26,33 @@
 <br>
 
 ## :arrow_forward: &nbsp; User Registration
-<img alt="Zeruai" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592209017/zeruai/create-account_fdutl7.gif" />
+<img alt="Company" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592810687/company/ezgif.com-video-to-gif_j4blgj.gif" />
 
 <br>
 
 ## :arrow_forward: &nbsp; Application LogIn
-<img alt="Zeruai" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592209767/zeruai/login_m29yvw.gif" />
+<img alt="Company" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592810982/company/ezgif.com-video-to-gif_1_durvtm.gif" />
 
 <br>
 
 ## :arrow_forward: &nbsp; Application LogOut
-<img alt="Zeruai" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592210005/zeruai/logout_kdhobr.gif" />
+<img alt="Company" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592811167/company/ezgif.com-video-to-gif_2_nunrk6.gif" />
 
 <br>
 
-## :arrow_forward: &nbsp; Responsive SignUp
-<img alt="Zeruai" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592210267/zeruai/responsive-signup_fuy7md.gif" />
+## :arrow_forward: &nbsp; Responsive SignIn
+<img alt="Company" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592811370/company/ezgif.com-video-to-gif_3_md2nyn.gif" />
 
 <br>
 
 ## :arrow_forward: &nbsp; Responsive Dashboard
-<img alt="Zeruai" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592210351/zeruai/responsive-dashboard_xb1orf.gif" />
+<img alt="Company" src="https://res.cloudinary.com/vitorgiovane/image/upload/v1592811540/company/ezgif.com-video-to-gif_4_st8xdg.gif" />
 
 <br>
 
 ## :video_game: &nbsp; How to run this project
 1. Clone this repository on your machine.
-2. Make sure you have the project https://github.com/vitorgiovane/zeruai-back-end running in your machine.
+2. Make sure you have the project https://github.com/vitorgiovane/company-back-end running in your machine.
 3. In a terminal at the root of the project run `yarn` or` npm install` to install the dependencies.
 4. At a terminal at the root of the project run `yarn start` or` npm run start` to run the project.
 
@@ -72,7 +72,7 @@ This project was developed with the following technologies:
 <br>
 
 ## :page_with_curl: &nbsp; License
-This project is under the MIT license. See the [LICENSE](https://github.com/vitorgiovane/zeruai-front-end/blob/master/LICENSE) for more information.
+This project is under the MIT license. See the [LICENSE](https://github.com/vitorgiovane/company-front-end/blob/master/LICENSE) for more information.
 
 <br>
 
